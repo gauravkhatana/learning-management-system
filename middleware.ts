@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { clerkMiddleware } from '@clerk/nextjs/server';
+import { authMiddleware, clerkMiddleware } from '@clerk/nextjs/server';
 // import { authMiddleware } from '@clerk/nextjs/server';
 
 // export default authMiddleware({
@@ -17,7 +17,9 @@ import { clerkMiddleware } from '@clerk/nextjs/server';
 //   }
 // };
 
-export default clerkMiddleware();
+// Define your public routes (accessible without authentication)
+
+export default clerkMiddleware({});
 
 // export default async (req: NextRequest) => {
 //   try {
