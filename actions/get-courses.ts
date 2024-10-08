@@ -25,6 +25,9 @@ export const getCourses = async ({ userId, title, categoryId }: GetCourses) => {
       },
     });
 
+    console.log("userCourses:::::::::", userCourses);
+
+
     const courseIds = userCourses
       .map((userCourse) => userCourse.courseId)
       .filter((id): id is string => id !== null);

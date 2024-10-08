@@ -35,9 +35,11 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
     ...searchParams,
   });
 
-  const startedCourses = 'startedCourses' in result ? (result.startedCourses as CourseWithProgressWithCategory[]) : []  ;
-  const notStartedCourses = 'notStartedCourses' in result ?( result.notStartedCourses as CourseWithProgressWithCategory[]) : [] ;
+  const startedCourses = 'startedCourseWithProgress' in result ? (result.startedCourseWithProgress as CourseWithProgressWithCategory[]) : []  ;
+  const notStartedCourses = 'notStartedCourseWithProgress' in result ?( result.notStartedCourseWithProgress as CourseWithProgressWithCategory[]) : [] ;
 
+  console.log("startedCourses in page:::::::::::: " ,startedCourses);
+  console.log("startedCourses in page:::::::::::: " ,notStartedCourses);
 
   return (
     <>
