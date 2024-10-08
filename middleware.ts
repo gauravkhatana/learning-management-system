@@ -6,16 +6,37 @@ import { authMiddleware } from '@clerk/nextjs/server';
 //   publicRoutes: ["/api/uploadthing"],
 // });
 
-export default async () => {
+// export default async () => {
+//   try {
+//     return await authMiddleware({
+//       publicRoutes: ["/api/uploadthing"],
+//     });
+//   } catch (error) {
+//     console.error("Error in auth middleware:", error);
+//     return NextResponse.error();
+//   }
+// };
+
+export default async (req: NextRequest) => {
   try {
-    return await authMiddleware({
-      publicRoutes: ["/api/uploadthing"],
+    const response = await authMiddleware({
+      publicRoutes: ["/api/uploadthing"], // Adjust your public routes
     });
+
+    // Ensure the response is returned
+    if (response instanceof NextResponse) {
+      return response;
+    }
+
+    // Fallback in case the authMiddleware didn't return a valid response
+    return NextResponse.next();
   } catch (error) {
     console.error("Error in auth middleware:", error);
-    return NextResponse.error();
+    return new NextResponse("Internal Server Error", { status: 500 });
   }
 };
+
+
 
 
 
