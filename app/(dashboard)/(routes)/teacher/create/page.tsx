@@ -75,7 +75,7 @@ const CreateCoursePage =  () => {
                 <FormControl>
                   <Input
                     disabled={isSubmitting}
-                    placeholder="e.g. 'Advanced web development'"
+                    placeholder="e.g. &apos;Advanced web development"
                     {...field}
                   />
                 </FormControl>

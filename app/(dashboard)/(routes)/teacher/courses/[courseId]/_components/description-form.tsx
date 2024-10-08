@@ -87,7 +87,7 @@ export const DescriptionForm = ({ initialData, courseId }: DescriptionFormProps)
           render={({ field }) => (
             <FormItem>
               <FormControl>
-              <Textarea placeholder="e.g. 'This course is about...'" disabled={isSubmitting} {...field} /></FormControl>
+              <Textarea placeholder="e.g. &apos;This course is about..." disabled={isSubmitting} {...field} /></FormControl>
               <FormMessage>
                 {form.formState.errors.description?.message}
               </FormMessage>

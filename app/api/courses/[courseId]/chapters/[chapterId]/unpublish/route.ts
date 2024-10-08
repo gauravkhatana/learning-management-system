@@ -40,14 +40,14 @@ export async function PATCH(
         courseId: params.courseId,
       },
       data: {
-        isPublished: false,
+        // isPublished: false,
       },
     });
 
     const publishedChapterInCourse = await db.chapter.findMany({
         where: {
           courseId: params.courseId,
-          isPublished: true,
+          // isPublished: true,
         },
       });
 
@@ -57,7 +57,7 @@ export async function PATCH(
             id: params.courseId,
           },
           data: {
-            isPublished: false,
+            // isPublished: false,
           },
         });
       }

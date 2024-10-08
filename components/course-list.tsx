@@ -11,6 +11,10 @@ type CourseWithProgressWithCategory = Course & {
   }[];
 };
 
+// interface CoursesListProps {
+//   items: Course[];
+//   nonItems: Course[];
+// }
 interface CoursesListProps {
   items: CourseWithProgressWithCategory[];
   nonItems: CourseWithProgressWithCategory[];

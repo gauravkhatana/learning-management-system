@@ -4,6 +4,7 @@ import { SearchInput } from "@/components/search-input";
 import { getCourses } from "@/actions/get-courses";
 import { auth } from "@clerk/nextjs/server";
 import { CoursesList } from "@/components/course-list";
+import { Category, Course } from "@prisma/client";
 
 interface SearchPageProps {
   searchParams: {
@@ -11,6 +12,14 @@ interface SearchPageProps {
     categoryId: string;
   };
 }
+
+type CourseWithProgressWithCategory = Course & {
+  progress: number | null;
+  category: Category | null;
+  chapters: {
+    id: string;
+  }[];
+};
 
 const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const { userId } = auth();
@@ -26,8 +35,8 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
     ...searchParams,
   });
 
-  const startedCourses = 'startedCourses' in result ? result.startedCourses : [];
-  const notStartedCourses = 'notStartedCourses' in result ? result.notStartedCourses : [];
+  const startedCourses = 'startedCourses' in result ? (result.startedCourses as CourseWithProgressWithCategory[]) : []  ;
+  const notStartedCourses = 'notStartedCourses' in result ?( result.notStartedCourses as CourseWithProgressWithCategory[]) : [] ;
 
 
   return (

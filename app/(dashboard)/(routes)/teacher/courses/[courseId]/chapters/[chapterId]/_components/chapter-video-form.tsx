@@ -8,13 +8,13 @@ import MuxPlayer from "@mux/mux-player-react";
 import { Pencil, PlusCircle, VideoIcon } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Chapter, MuxData } from "@prisma/client";
+import { Activity, Chapter, MuxData } from "@prisma/client";
 
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
 
 interface ChapterVideoFormProps {
-  initialData: Chapter & { muxData?: MuxData | null };
+  initialData: Chapter & {activities : Activity[]};
   courseId: string;
   chapterId: string;
 }
@@ -56,13 +56,13 @@ export const ChapterVideoForm = ({
           onClick={() => setIsEditing((current) => !current)}
         >
           {isEditing && <>Cancel</>}
-          {!isEditing && !initialData?.videoUrl && (
+          {!isEditing && !initialData?.activities[0].videoUrl && (
             <>
               <PlusCircle className="h-4 w-4 mr-2" />
               Add an video
             </>
           )}
-          {!isEditing && initialData?.videoUrl && (
+          {!isEditing && initialData?.activities[0].videoUrl && (
             <>
               <Pencil className="h-4 w-4 mr-2" />
               Edit video
@@ -71,13 +71,13 @@ export const ChapterVideoForm = ({
         </Button>
       </div>
       {!isEditing &&
-        (!initialData.videoUrl ? (
+        (!initialData?.activities[0].videoUrl ? (
           <div className="flex items-center justify-center h-60 bg-slate-100 rounded-md">
             <VideoIcon className="h-10 w-10 text-slate-500" />
           </div>
         ) : (
           <div className="relative aspect-video mt-2">
-            <MuxPlayer playbackId={initialData?.muxData?.playbackId || ""} />
+            <MuxPlayer playbackId={''} />
           </div>
         ))}
       {isEditing && (
@@ -92,11 +92,11 @@ export const ChapterVideoForm = ({
             }}
           />
           <div className="text-xs text-muted-foreground mt-4">
-            Upload this chapter's video
+            Upload this chapter&apos;s video
           </div>
         </div>
       )}
-      {initialData.videoUrl && (
+      {initialData?.activities[0].videoUrl && (
         <div className="text-xs text-muted-foreground mt-2">
           Video can take a few minutes to process. Please refresh the page once if video does not appear.
         </div>

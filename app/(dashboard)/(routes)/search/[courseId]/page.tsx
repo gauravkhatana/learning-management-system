@@ -3,11 +3,10 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 const CourseIdPage = async ({
-  children,
+  
   params,
 }: {
-  children: React.ReactNode;
-  params: { courseId: string };
+  params: { courseId: string; };
 }) => {
   const { userId } = auth();
 

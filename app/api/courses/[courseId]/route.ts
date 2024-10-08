@@ -21,23 +21,23 @@ export async function DELETE(
     }
     const course = await db.course.findUnique({
       where: { id: courseId, userId },
-      include: { chapters: { include: { muxData: true } } },
+      include: { chapters : true },
     });
     if (!course) {
       return new NextResponse("Not Found", { status: 404 });
     }
 
-    for (const chapter of course.chapters) {
-      if (chapter.muxData?.assetId) {
-        await Assets.delete(chapter.muxData.assetId);
-        // await db.muxData.delete({
-        //   where: {
-        //     id: chapter.muxData.id,
-        //   },
-        // });
-        // THIS WILL BE HANDELED BECAUSE WE  HAVE USED CASCADE ON MUX DATA DELETE
-      }
-    }
+    // for (const chapter of course.chapters) {
+    //   if (chapter) {
+    //     await Assets.delete(chapter.muxData.assetId);
+    //     // await db.muxData.delete({
+    //     //   where: {
+    //     //     id: chapter.muxData.id,
+    //     //   },
+    //     // });
+    //     // THIS WILL BE HANDELED BECAUSE WE  HAVE USED CASCADE ON MUX DATA DELETE
+    //   }
+    // }
     
     const deletedCourse = await db.course.delete({
       where: {

@@ -1,9 +1,9 @@
-
+"use client";
 
 // pages/api/storeUser.js
 import { db } from "@/lib/db";
 import axios from "axios";
-import { getAuth } from "@clerk/nextjs/server";
+// import { getAuth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 import Error from "next/error";
 
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
         email: userData.email_addresses[0]?.email_address || null,
         firstName: userData.first_name || null,
         lastName: userData.last_name || null,
-        password: userData.password_hash || null, // Ensure password_hash is available from Clerk
+        password: "root", // Ensure password_hash is available from Clerk
       },
     });
 

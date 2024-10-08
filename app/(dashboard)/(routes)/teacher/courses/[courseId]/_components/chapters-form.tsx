@@ -93,7 +93,7 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
                 <FormItem>
                   <FormControl>
                     <Input
-                      placeholder="e.g. 'Introduction to the course...'"
+                      placeholder="e.g. &apos;Introduction to the course..."
                       disabled={isSubmitting}
                       {...field}
                     />
@@ -127,7 +127,7 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
       )}
       {!isCreating && (
         <p className="text-xs text-muted-foreground mt-4">
-          "Drag and drop to reorder the chapters"
+          &quot;Drag and drop to reorder the chapters&quot;
         </p>
       )}
     </div>

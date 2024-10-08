@@ -42,7 +42,7 @@ export const CourseSidebarItem = ({
 
   const isActive = pathname?.includes(id);
 
-  // Extract activityId from the URL (assuming it's part of the path)
+  // Extract activityId from the URL (assuming its part of the path)
   useEffect(() => {
     const pathParts = pathname.split("/");
 

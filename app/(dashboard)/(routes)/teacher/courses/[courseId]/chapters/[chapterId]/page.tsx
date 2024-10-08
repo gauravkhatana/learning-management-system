@@ -26,6 +26,13 @@ const ChaptersPage = async ({
       id: params.chapterId,
       courseId: params.courseId,
     },
+    include: {
+      activities: {
+        orderBy: {
+          order: "asc",
+        },
+      },
+    }
    
   });
 

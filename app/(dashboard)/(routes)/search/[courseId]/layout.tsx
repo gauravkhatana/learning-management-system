@@ -29,12 +29,12 @@ const CourseLayout = async ({
             where: {
               isPublished: true,
             },
-            select: {
-              id: true,
-              title: true,
-              description: true,
+            // select: {
+            //   id: true,
+            //   title: true,
+            //   description: true,
               
-            },
+            // },
             orderBy: {
               order: "asc",
             },

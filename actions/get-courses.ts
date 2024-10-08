@@ -16,17 +16,12 @@ type GetCourses = {
   categoryId?: string;
 };
 
-export const getCourses = async ({
-  userId,
-  title,
-  categoryId,
-}: GetCourses) => {
-// }: GetCourses): Promise<CourseWithProgressWithCategory[]> => {
+export const getCourses = async ({ userId, title, categoryId }: GetCourses) => {
+  // }: GetCourses): Promise<CourseWithProgressWithCategory[]> => {
   try {
     const userCourses = await db.userProgress.findMany({
       where: {
         userId,
-         
       },
     });
 
@@ -64,8 +59,6 @@ export const getCourses = async ({
 
     console.log("startedCourses:::::::::", startedCourses);
 
-
-
     notStartedCourses = await db.course.findMany({
       where: {
         id: {
@@ -92,7 +85,7 @@ export const getCourses = async ({
 
     console.log("notStartedCourses:::::::::", notStartedCourses);
 
-    const courseWithProgress: CourseWithProgressWithCategory[] =
+    const startedCourseWithProgress: CourseWithProgressWithCategory[] =
       await Promise.all(
         startedCourses.map(async (course) => {
           const progressPercentage = await getProgress(userId, course.id);
@@ -102,8 +95,18 @@ export const getCourses = async ({
           };
         })
       );
+    const notStartedCourseWithProgress: CourseWithProgressWithCategory[] =
+      await Promise.all(
+        notStartedCourses.map(async (course) => {
+          const progressPercentage = await getProgress(userId, course.id);
+          return {
+            ...course,
+            progress: progressPercentage,
+          };
+        })
+      );
 
-    return {startedCourses,notStartedCourses};
+    return { startedCourseWithProgress, notStartedCourseWithProgress };
   } catch (error) {
     console.log("[GET_COURSES]", error);
     return [];

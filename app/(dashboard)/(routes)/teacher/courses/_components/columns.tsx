@@ -73,7 +73,7 @@ export const columns: ColumnDef<Course>[] = [
     header: "Actions",
     cell: ({ row }) => {
       const course = row.original;
-      const router = useRouter();
+      // const router = useRouter();
       return (
         <DropdownMenu>
           <DropdownMenuTrigger>
@@ -84,9 +84,10 @@ export const columns: ColumnDef<Course>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent sideOffset={5}  align="end">
             <DropdownMenuItem 
-            onClick={() => router.push(
-              `/teacher/courses/${course.id}`
-            )}
+            onClick={() => 
+              // router.push(`/teacher/courses/${course.id}`)
+              console.log("Edit course")
+            }
             >
               <Pencil className="mr-2 h-4 w-4" />
               Edit
