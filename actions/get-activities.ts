@@ -38,7 +38,7 @@ export const getActivity = async ({
       throw new Error("Course, chapter or activity not found");
     }
 
-    let muxData = null;
+    // let muxData = null;
     let attachments: Attachment[] = [];
     let nextActivity: Activity | null = null;
     if (course.isPublished) {
@@ -48,11 +48,11 @@ export const getActivity = async ({
         },
       });
 
-      muxData = await db.muxData.findUnique({
-        where: {
-          activityId,
-        },
-      });
+      // muxData = await db.muxData.findUnique({
+      //   where: {
+      //     activityId,
+      //   },
+      // });
     }
 
     nextActivity = await db.activity.findFirst({

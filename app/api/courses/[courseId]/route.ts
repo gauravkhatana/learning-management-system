@@ -1,12 +1,12 @@
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
-import Mux from "@mux/mux-node";
+// import Mux from "@mux/mux-node";
 
-const { video } = new Mux();
+// const { video } = new Mux();
 
-const Video = video;
-const Assets = Video.assets;
+// const Video = video;
+// const Assets = Video.assets;
 
 export async function DELETE(
   req: Request,

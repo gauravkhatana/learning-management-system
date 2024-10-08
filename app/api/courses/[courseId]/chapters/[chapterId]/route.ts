@@ -1,16 +1,16 @@
-import Mux from "@mux/mux-node";
+// import Mux from "@mux/mux-node";
 // const Mux = require("@mux/mux-node");
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 // Initialize Mux client with the correct configuration object
-const muxClient = new Mux();
+// const muxClient = new Mux();
 
-const { video } = muxClient;
+// const { video } = muxClient;
 
-const Video = video;
-const Assets = Video.assets;
+// const Video = video;
+// const Assets = Video.assets;
 
 export async function DELETE(
   req: Request,
