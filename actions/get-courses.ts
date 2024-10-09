@@ -25,7 +25,7 @@ export const getCourses = async ({ userId, title, categoryId }: GetCourses) => {
       },
     });
 
-    console.log("userCourses:::::::::", userCourses);
+    // console.log("userCourses:::::::::", userCourses);
 
 
     const courseIds = userCourses
@@ -34,7 +34,7 @@ export const getCourses = async ({ userId, title, categoryId }: GetCourses) => {
     let startedCourses;
     let notStartedCourses;
 
-    console.log("courseIds:::::::::", courseIds);
+    // console.log("courseIds:::::::::", courseIds);
 
     startedCourses = await db.course.findMany({
       where: {
@@ -60,7 +60,7 @@ export const getCourses = async ({ userId, title, categoryId }: GetCourses) => {
       },
     });
 
-    console.log("startedCourses:::::::::", startedCourses);
+    // console.log("startedCourses:::::::::", startedCourses);
 
     notStartedCourses = await db.course.findMany({
       where: {
@@ -86,7 +86,7 @@ export const getCourses = async ({ userId, title, categoryId }: GetCourses) => {
       },
     });
 
-    console.log("notStartedCourses:::::::::", notStartedCourses);
+    // console.log("notStartedCourses:::::::::", notStartedCourses);
 
     const startedCourseWithProgress: CourseWithProgressWithCategory[] =
       await Promise.all(

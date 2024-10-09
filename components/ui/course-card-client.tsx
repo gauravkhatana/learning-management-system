@@ -35,7 +35,8 @@ export const CourseCardClient = ({
   userProgress,
 }: CourseCardClientProps) => {
   const router = useRouter();
-  console.log("USER PROGRESS::::::::::::",userProgress);
+  
+  // console.log("USER PROGRESS::::::::::::",userProgress);
 
   const courseProgress = () => {
     if (userProgress) {

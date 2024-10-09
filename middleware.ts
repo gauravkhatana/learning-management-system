@@ -19,7 +19,7 @@ import { authMiddleware, clerkMiddleware } from '@clerk/nextjs/server';
 
 // Define your public routes (accessible without authentication)
 
-export default authMiddleware({});
+export default authMiddleware({ignoredRoutes: ["/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/api/saveuser","/api/uploadthing"]});
 
 // export default async (req: NextRequest) => {
 //   try {

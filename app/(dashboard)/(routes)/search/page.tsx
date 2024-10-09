@@ -38,8 +38,8 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const startedCourses = 'startedCourseWithProgress' in result ? (result.startedCourseWithProgress as CourseWithProgressWithCategory[]) : []  ;
   const notStartedCourses = 'notStartedCourseWithProgress' in result ?( result.notStartedCourseWithProgress as CourseWithProgressWithCategory[]) : [] ;
 
-  console.log("startedCourses in page:::::::::::: " ,startedCourses);
-  console.log("startedCourses in page:::::::::::: " ,notStartedCourses);
+  // console.log("startedCourses in page:::::::::::: " ,startedCourses);
+  // console.log("startedCourses in page:::::::::::: " ,notStartedCourses);
 
   return (
     <>
